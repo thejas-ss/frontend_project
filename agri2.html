@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Agriculture</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f8f2;
+            color: #26352a;
+            line-height: 1.6;
+        }
+
+        /* ---------- NAVBAR ---------- */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #174d2a;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 25px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #8bd450;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #a9e87a;
+        }
+
+        /* ---------- HERO ---------- */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px 20px;
+
+            background:
+                linear-gradient(rgba(10, 55, 25, 0.65),
+                rgba(10, 55, 25, 0.65)),
+                url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 21px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #8bd450;
+            color: #12351c;
+            padding: 13px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            transform: translateY(-3px);
+        }
+
+        /* ---------- GENERAL ---------- */
+
+        section {
+            padding: 75px 20px;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #174d2a;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #657568;
+        }
+
+        /* ---------- INTRO ---------- */
+
+        .intro {
+            background: white;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: center;
+        }
+
+        .intro-image img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .intro-text h3 {
+            font-size: 30px;
+            color: #174d2a;
+            margin-bottom: 15px;
+        }
+
+        .intro-text p {
+            margin-bottom: 15px;
+        }
+
+        /* ---------- CARDS ---------- */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.14);
+        }
+
+        .card-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #174d2a;
+            margin-bottom: 10px;
+        }
+
+        /* ---------- CROPS ---------- */
+
+        .crops {
+            background: #edf6e9;
+        }
+
+        .crop-card {
+            overflow: hidden;
+            padding: 0;
+        }
+
+        .crop-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+        }
+
+        .crop-info {
+            padding: 22px;
+        }
+
+        /* ---------- TECHNOLOGY ---------- */
+
+        .technology {
+            background: white;
+        }
+
+        .tech-card {
+            border-left: 5px solid #65a93c;
+        }
+
+        /* ---------- FARMING METHODS ---------- */
+
+        .methods {
+            background: #edf6e9;
+        }
+
+        .method-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .method {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+        }
+
+        .method-icon {
+            font-size: 35px;
+        }
+
+        .method h3 {
+            color: #174d2a;
+        }
+
+        /* ---------- TIPS ---------- */
+
+        .tips {
+            background: #174d2a;
+            color: white;
+        }
+
+        .tips .section-title h2 {
+            color: white;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tip {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .tip h3 {
+            color: #a9e87a;
+            margin-bottom: 10px;
+        }
+
+        /* ---------- CONTACT ---------- */
+
+        .contact {
+            background: white;
+            text-align: center;
+        }
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* ---------- FOOTER ---------- */
+
+        footer {
+            background: #0c3019;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer span {
+            color: #8bd450;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 900px) {
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .cards,
+            .tips-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero p {
+                font-size: 17px;
+            }
+
+            .cards,
+            .tips-grid,
+            .method-list {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <nav>
+            <div class="logo">🌱 Smart<span>Agri</span></div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#crops">Crops</a></li>
+                <li><a href="#methods">Methods</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#tips">Tips</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Smart Agriculture</h1>
+
+            <p>
+                Growing a smarter and more sustainable future
+                through modern farming methods and technology.
+            </p>
+
+            <a href="#about" class="btn">Explore Smart Farming</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- INTRODUCTION -->
+    <section class="intro" id="about">
+
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Introduction to Smart Farming</h2>
+                <p>Technology meets agriculture</p>
+            </div>
+
+            <div class="intro-content">
+
+                <div class="intro-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1000&q=80"
+                        alt="Modern agricultural field">
+                </div>
+
+                <div class="intro-text">
+
+                    <h3>What is Smart Agriculture?</h3>
+
+                    <p>
+                        Smart agriculture is the use of modern technology,
+                        data and scientific methods to improve farming.
+                    </p>
+
+                    <p>
+                        Farmers can use sensors, drones, GPS, automated
+                        irrigation and other technologies to monitor crops,
+                        manage resources and improve productivity.
+                    </p>
+
+                    <p>
+                        The main goal is to produce more food while
+                        reducing water, fertilizer, energy and other
+                        resource requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TYPES OF CROPS -->
+    <section class="crops" id="crops">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Types of Crops</h2>
+
+                <p>
+                    Different crops serve different agricultural purposes.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card crop-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1536633314125-0f1bb2e7c6a0?auto=format&fit=crop&w=800&q=80"
+                        alt="Food crops">
+
+                    <div class="crop-info">
+
+                        <h3>🌾 Food Crops</h3>
+
+                        <p>
+                            Crops such as rice, wheat, maize and pulses
+                            are primarily grown for human consumption.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card crop-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1592982537447-6f8c8f0fb2f0?auto=format&fit=crop&w=800&q=80"
+                        alt="Vegetable crops">
+
+                    <div class="crop-info">
+
+                        <h3>🥕 Vegetable Crops</h3>
+
+                        <p>
+                            Vegetables include tomatoes, carrots, onions,
+                            potatoes and many other nutritious crops.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card crop-card">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=800&q=80"
+                        alt="Fruit crops">
+
+                    <div class="crop-info">
+
+                        <h3>🍎 Fruit Crops</h3>
+
+                        <p>
+                            Fruits such as apples, mangoes, bananas and
+                            oranges are important horticultural crops.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FARMING METHODS -->
+    <section class="methods" id="methods">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Modern Farming Methods</h2>
+
+                <p>
+                    Efficient and sustainable approaches to farming
+                </p>
+
+            </div>
+
+            <div class="method-list">
+
+                <div class="method">
+
+                    <div class="method-icon">💧</div>
+
+                    <div>
+                        <h3>Drip Irrigation</h3>
+
+                        <p>
+                            Delivers water directly to the roots of plants,
+                            reducing water wastage.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="method">
+
+                    <div class="method-icon">🌱</div>
+
+                    <div>
+                        <h3>Organic Farming</h3>
+
+                        <p>
+                            Uses natural fertilizers and farming practices
+                            while reducing dependence on synthetic chemicals.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="method">
+
+                    <div class="method-icon">🌿</div>
+
+                    <div>
+                        <h3>Hydroponics</h3>
+
+                        <p>
+                            Plants are grown without traditional soil using
+                            nutrient-rich water solutions.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="method">
+
+                    <div class="method-icon">🏡</div>
+
+                    <div>
+                        <h3>Greenhouse Farming</h3>
+
+                        <p>
+                            Crops are grown in controlled environments to
+                            manage temperature, humidity and light.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODERN TECHNOLOGY -->
+    <section class="technology" id="technology">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Modern Agriculture Technologies</h2>
+
+                <p>
+                    Technology helping farmers make better decisions
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card tech-card">
+
+                    <div class="card-icon">🚁</div>
+
+                    <h3>Drones</h3>
+
+                    <p>
+                        Drones can capture aerial images of fields and help
+                        identify crop health and problem areas.
+                    </p>
+
+                </div>
+
+
+                <div class="card tech-card">
+
+                    <div class="card-icon">📡</div>
+
+                    <h3>IoT Sensors</h3>
+
+                    <p>
+                        Sensors can monitor soil moisture, temperature,
+                        humidity and other farming conditions.
+                    </p>
+
+                </div>
+
+
+                <div class="card tech-card">
+
+                    <div class="card-icon">🛰️</div>
+
+                    <h3>GPS & Satellite Technology</h3>
+
+                    <p>
+                        GPS and satellite data support precision farming,
+                        field mapping and crop monitoring.
+                    </p>
+
+                </div>
+
+
+                <div class="card tech-card">
+
+                    <div class="card-icon">🤖</div>
+
+                    <h3>Automation</h3>
+
+                    <p>
+                        Automated systems can assist with irrigation,
+                        harvesting and crop monitoring.
+                    </p>
+
+                </div>
+
+
+                <div class="card tech-card">
+
+                    <div class="card-icon">📊</div>
+
+                    <h3>Data Analytics</h3>
+
+                    <p>
+                        Agricultural data can help farmers make informed
+                        decisions about crops and resources.
+                    </p>
+
+                </div>
+
+
+                <div class="card tech-card">
+
+                    <div class="card-icon">💡</div>
+
+                    <h3>Artificial Intelligence</h3>
+
+                    <p>
+                        AI can help analyze crop images, identify diseases
+                        and support agricultural decision-making.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FARMER TIPS -->
+    <section class="tips" id="tips">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <h2>Farmer Tips</h2>
+
+                <p>
+                    Simple practices for smarter and sustainable farming
+                </p>
+
+            </div>
+
+            <div class="tips-grid">
+
+                <div class="tip">
+
+                    <h3>💧 Save Water</h3>
+
+                    <p>
+                        Use efficient irrigation methods such as drip
+                        irrigation and monitor soil moisture.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <h3>🌱 Test Your Soil</h3>
+
+                    <p>
+                        Regular soil testing helps determine nutrient
+                        requirements and supports healthy crop growth.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <h3>🐛 Monitor Pests</h3>
+
+                    <p>
+                        Regularly inspect crops and identify pest problems
+                        early to reduce crop damage.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <h3>📱 Use Technology</h3>
+
+                    <p>
+                        Use mobile applications, sensors and weather
+                        information to improve farm decisions.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <h3>🌦️ Monitor Weather</h3>
+
+                    <p>
+                        Keep track of weather conditions when planning
+                        irrigation, planting and harvesting.
+                    </p>
+
+                </div>
+
+
+                <div class="tip">
+
+                    <h3>♻️ Practice Sustainability</h3>
+
+                    <p>
+                        Protect soil, water and biodiversity by using
+                        sustainable farming practices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT / CONCLUSION -->
+    <section class="contact">
+
+        <div class="container">
+
+            <div class="contact-box">
+
+                <div class="section-title">
+
+                    <h2>Building the Future of Farming</h2>
+
+                    <p>
+                        Smart agriculture combines knowledge, technology
+                        and sustainable farming practices to create a
+                        better future for farmers and communities.
+                    </p>
+
+                </div>
+
+                <a href="#home" class="btn">
+                    Back to Top ↑
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © 2026 <span>SmartAgri</span> |
+            Smart Agriculture Website
+        </p>
+
+    </footer>
+
+</body>
+</html>
